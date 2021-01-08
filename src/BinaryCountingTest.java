@@ -8,6 +8,7 @@ public class BinaryCountingTest {
 	static int [] numbers; 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//asdasdsa
 		Scanner sc = new Scanner(System.in);
 		N = sc.nextInt();
         numbers = new int[N];
@@ -21,7 +22,7 @@ public class BinaryCountingTest {
 	private static void getnerateSubset(int caseCount) {
 	 
 		for(int flag= 0; flag<caseCount; flag++) {
-			//flag의 각 비트자기를 확인하여 원소 선택 유/무를 판단 
+			//flag�쓽 媛� 鍮꾪듃�옄湲곕�� �솗�씤�븯�뿬 �썝�냼 �꽑�깮 �쑀/臾대�� �뙋�떒 
 			for (int j = 0; j < N; j++) {
 				if((flag &(1<<j))!=0) {
 					System.out.print(numbers[j]+" ");
