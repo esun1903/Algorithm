@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f1760ee2-c380-457d-8b82-f8dd66c3108a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Main_7576.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main_7576.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+  </component>
+  <component name="ProjectId" id="1YsTL8OV1xKF0akQibycxDZKjnT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GoGoSeeing-master" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Main_1012" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main_1012" />
+      <module name="algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main_2178" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main_2178" />
+      <module name="algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main_7576" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main_7576" />
+      <module name="algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Solution_3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="summer_test.Solution_3" />
+      <module name="algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="summer_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main_7576" />
+        <item itemvalue="Application.Main_2178" />
+        <item itemvalue="Application.Solution_3" />
+        <item itemvalue="Application.Main_1012" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1760ee2-c380-457d-8b82-f8dd66c3108a" name="Default Changelist" comment="" />
+      <created>1583730243542</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583730243542</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="321" y="76" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1593780191912">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="321" y="76" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.680@0.0.1280.680" timestamp="1593780191912" />
+    <state width="1281" height="220" key="GridCell.Tab.0.bottom" timestamp="1594119090279">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="220" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594119090279" />
+    <state width="1281" height="220" key="GridCell.Tab.0.center" timestamp="1594119090279">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="220" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594119090279" />
+    <state width="1281" height="220" key="GridCell.Tab.0.left" timestamp="1594119090279">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="220" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594119090279" />
+    <state width="1281" height="220" key="GridCell.Tab.0.right" timestamp="1594119090279">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="220" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594119090279" />
+    <state width="1281" height="88" key="GridCell.Tab.1.bottom" timestamp="1594038560011">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="88" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594038560011" />
+    <state width="1281" height="88" key="GridCell.Tab.1.center" timestamp="1594038560011">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="88" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1594038560011" />
+    <state width="1281" height="88" key="GridCell.Tab.1.left" timestamp="1594038560011">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="88" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1594038560011" />
+    <state width="1281" height="88" key="GridCell.Tab.1.right" timestamp="1594038560011">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1281" height="88" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1594038560011" />
+    <state x="37" y="0" key="new project wizard" timestamp="1602237379934">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="37" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1602237379934" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main_1110.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main_14889_1.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main_1260.java</url>
+          <line>3</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main_2606.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="result[c]" language="JAVA" />
+        <watch expression="result" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/algorithm$Main_8958.ic" NAME="Main_8958 Coverage Results" MODIFIED="1584511834491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
