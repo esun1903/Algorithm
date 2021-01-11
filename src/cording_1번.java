@@ -1,6 +1,6 @@
 package day0906;
 
-public class 카카오_1번 {
+public class cording_1번 {
 
 	public static int xL;
 	public static int xR;
