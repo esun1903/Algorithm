@@ -22,6 +22,7 @@ public class Main_17281_야구 {
 		arr = new int[N + 1][10];
 		visited = new boolean[10];
 		order = new int[10];
+
 		for (int i = 1; i <= N; i++) {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 1; j <= 9; j++) { // 1루부터 9루까지 반복하기
@@ -146,7 +147,7 @@ public class Main_17281_야구 {
 				case 0: {
 					outCount++;
 					break;
-			     	}
+				}
 				}
 				if (outCount == 3)
 					break;
