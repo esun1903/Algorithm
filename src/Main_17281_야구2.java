@@ -173,10 +173,10 @@ public class Main_17281_야구2 {
             //선수 타순
             int[] newOrder = new int[10];
             int temp = 1;
-            for (int i = 1; i <= 3; i++) {
+            for (int i = 1; i <= 3; i++) { // 
                 newOrder[temp++] = order[i];
             }
-            newOrder[temp++] = 1;
+            newOrder[temp++] = 1; 
             for (int i = 4; i <= 8; i++) {
                 newOrder[temp++] = order[i];
             }
