@@ -7,7 +7,7 @@ public class Main_17140_이차원배열과연산 {
 
 	public static int R = 3;
 	public static int C = 3;
-	public static int map[][] = new int [100][100];
+	public static int map[][] = new int[101][101];
 
 	public static void main(String[] args) throws IOException {
 
@@ -23,58 +23,47 @@ public class Main_17140_이차원배열과연산 {
 			for (int j = 0; j < 3; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
-		} // 입력받기
-			// 행 또는 열의 크기가 100을 넘어가는 경우에는 처음 100개를 제외한 나머지는 버린다.
+		}
 
-		for (int i = 0; i < 100; i++) { // 100초 반복
-			if (i == 0 && map[r][c] == k) { // 만약, 초기값이 이렇다면
+		// 행 또는 열의 크기가 100을 넘어가는 경우에는 처음 100개를 제외한 나머지는 버린다.
+		for (int i = 0; i < 100; i++) {
+			if (i == 0 && map[r][c] == k) {
 				System.out.println(0);
 				return;
 			}
 
 			// R연산인지, C연산인지 checking
-			if (R < C) {
-				Ccalculator(); // C연산
-			} else {
-				Rcalculator(); // R연산
-			}
-
+			if (R < C) Ccalculator();
+			  else 	Rcalculator();
+			
 			if (map[r][c] == k) {
 				System.out.println(i + 1);
 				return;
 			}
-
+			
 		}
-
 		System.out.println(-1);
-
-	}// end of main
+	}
 
 	// 배열 A의 모든 행에 대해서 정렬을 수행한다.
 	private static void Rcalculator() {
-
 		for (int i = 0; i < R; i++) {
 			int[] n = new int[10];
-			for (int j = 0; j <C; j++) {
-				 int k = map[i][j];
-		         n[k]++;
-            }
-            // 수의 등장횟수가 커지는 순으로 
-            
-			// 그게 여러가지라면 
-            
-            //이 배열에서 수의 등장횟수가 가장 
-			
-		}//end of for
+			for (int j = 0; j < C; j++) {
+				int k = map[i][j];
+				n[k]++;
+			}
+			// 수의 등장횟수가 커지는 순으로
+			// 그게 여러가지라면
+			// 이 배열에서 수의 등장횟수가 가장
 
+		} // end of for
 	}
 
 	// 배열 A의 모든 열에 대해서 정렬을 수행한다.
 	private static void Ccalculator() {
 
 	}
-	
-
 
 } // end of class
 
