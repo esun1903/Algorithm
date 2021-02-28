@@ -5,28 +5,112 @@ public class Main_10026_적록색약 {
 	public static char map[][];
 	public static int[] dr = { -1, 1, 0, 0 };
 	public static int[] dc = { 0, 0, -1, 1 };
-	public static int NonResult;
+	public static int NonResult; // 적록색이 아닐때 result 값
 	public static int Result;
+	public static boolean visited[][];
+	public static int N;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
+		N = sc.nextInt();
 		map = new char[N][N];
+		visited = new boolean[N][N];
 		String str;
 		for (int i = 0; i < N; i++) {
 			str = sc.next();
 			for (int j = 0; j < N; j++) {
 				map[i][j] = str.charAt(j);
 			}
-		} 
+		}
 		// 적록색약이 아닌 사람이 봤을 때의 구역의 개수
-		NonRedGreen();
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (visited[i][j] == false)
+					NonResult++;
+				NonRedGreen(i, j);
+			}
+		}
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (map[i][j] == 'R')
+					map[i][j] = 'G';
+			   visited[i][j] = false; 
+			}
+		}
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (visited[i][j] == false)
+					  Result++;
+			   RedGreen(i, j);
+			}
+		}
+ 
+	
+		
+		System.out.print(NonResult + " "  + Result);
 
 	}
 
-	private static void NonRedGreen() { // DFS를 사용할 것 
-       
+	private static void RedGreen(int r, int c) {
+		if (visited[r][c] == true) {
+			return;
+		}
+		visited[r][c] = true;
+		for (int i = 0; i < 4; i++) {
+			int nr = r + dr[i];
+			int nc = c + dc[i];
+
+			if (0 <= nr && nr < N && 0 <= nc && nc < N) {
+				if (map[r][c] == map[nr][nc] && visited[nr][nc] == false) {
+					NonRedGreen(nr, nc);
+				}
+			}
+		}
+		// 만약, 4방향 다 돌았는데도 DFS 돌 곳이 없다면?
+//
+//		System.out.println();
+//		for (int i = 0; i < N; i++) {
+//			System.out.println();
+//			for (int j = 0; j < N; j++) {
+//				if (visited[i][j] == false) {
+//					System.out.print(0 + " ");
+//				} else
+//					System.out.print(1 + " ");
+//			}
+//		}
 		
+	}
+
+	private static void NonRedGreen(int r, int c) { // DFS를 사용할 것
+
+		if (visited[r][c] == true) {
+			return;
+		}
+		visited[r][c] = true;
+		for (int i = 0; i < 4; i++) {
+			int nr = r + dr[i];
+			int nc = c + dc[i];
+
+			if (0 <= nr && nr < N && 0 <= nc && nc < N) {
+				if (map[r][c] == map[nr][nc] && visited[nr][nc] == false) {
+					NonRedGreen(nr, nc);
+				}
+			}
+		}
+		// 만약, 4방향 다 돌았는데도 DFS 돌 곳이 없다면?
+//
+//		System.out.println();
+//		for (int i = 0; i < N; i++) {
+//			System.out.println();
+//			for (int j = 0; j < N; j++) {
+//				if (visited[i][j] == false) {
+//					System.out.print(0 + " ");
+//				} else
+//					System.out.print(1 + " ");
+//			}
+//		}
 
 	}
 
