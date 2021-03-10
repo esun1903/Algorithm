@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main_11726_2xn타일링 { //피보나치를 생ㄱㄱ. 
+public class Main_11726_2xn타일링 { //피보나치  map[1] = 1, map[2] = 2, map[3]  = 3, map[4] = 5 ~~~~
 
 	public static int map[];
 
