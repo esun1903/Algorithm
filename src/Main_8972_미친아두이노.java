@@ -6,12 +6,14 @@ import java.util.StringTokenizer;
 public class Main_8972_미친아두이노 {
 
 	public static char map[][]; // 보드의 [][]
+    public static int check[][];  // 보드를 체크하기 위한 이차원 배열 
 	public static int r1, c1; // 종수의 위치
 	public static int s1,s2; // 미친 아두이노의 위치 
 
 	public static int[] dr = { 0, 1, 1, 1, 0, 0, 0, -1, -1, -1 }; // 1부터 시작해야하고
 	public static int[] dc = { 0, -1, 0, 1, -1, 0, 1, -1, 0, 1 };
 	public static int num = 0; // 미친 아두이노의 갯수
+
 
 	public static void main(String[] args) throws Exception {
 
@@ -23,6 +25,7 @@ public class Main_8972_미친아두이노 {
 		int R = Integer.parseInt(st.nextToken());
 		int C = Integer.parseInt(st.nextToken());
 		map = new char[R][C];
+		
 		int min = 0;
 		int math = 0;
 		for (int i = 0; i < R; i++) {
@@ -83,29 +86,13 @@ public class Main_8972_미친아두이노 {
 						 min = math;   // w종수의 위치  + 미친 아두이노 
 					     minr = s1;
 					     minc = s2; 
+					     check[minr][minc]++; 
 					  }	 
 				}
 				
 				map[p.r][p.c] = '.';
-			
-				if(map[minr][minc] =='R') {
-					//만약, 2개 또는 그 이상의 아두이노가 같은 칸에 있는 경우 큰 폭발
-					map[minr][minc] ='.';  //만약, minr , minc 가 . 이라면 
-					map[p.r][p.c] = '.';
-				}
-				else {
-				map[minr][minc] = 'R';
-				}
-				
-//				System.out.println("========================");
-//				for (int o = 0; o < R; o++) {
-//					System.out.println();
-//			   	 for (int h = 0; h <C ; h++) {
-//						System.out.print(map[o][h]+" ");
-//					}
-//				}
-//				System.out.println("========================");
-//			
+					
+
 			}
 		}
 		
@@ -116,7 +103,6 @@ public class Main_8972_미친아두이노 {
 				System.out.print(map[o][h]);
 			}
 		}
-
 
 	}
 
@@ -129,8 +115,7 @@ public class Main_8972_미친아두이노 {
 			this.r = r;
 			this.c = c;
 		}
-	}
-
+	} // end of Pair 
 }
 // 1.  먼저 종수가 아두이노를 8가지 방향 (수직, 수평, 대각선)으로 이동시키거나, 그 위치에 그래도 놔둔다. 
 // 2.  종수의 아두이노를 미친 아누이노가 있는 칸으로 이동한 경우에는 게임이 끝나게 되며, 종수는 게임을 지게 된다. 
@@ -146,4 +131,14 @@ public class Main_8972_미친아두이노 {
 				System.out.print(map[i][j]+" ");
 			}
 		}
+		
+		
+		if(map[minr][minc] =='R') {
+			//만약, 2개 또는 그 이상의 아두이노가 같은 칸에 있는 경우 큰 폭발
+				map[minr][minc] ='.';  //만약, minr , minc 가 . 이라면 
+				map[p.r][p.c] = '.';
+			}
+			else {
+			map[minr][minc] = 'R';
+			}
  */
