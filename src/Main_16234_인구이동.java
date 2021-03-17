@@ -10,6 +10,7 @@ public class Main_16234_인구이동 {
 	public static int map[][];
 	public static boolean check[][]; // 방문체크
 	public static int result = 0;
+	public static int peCheck = 1;
 	public static int[] dr = { -1, 1, 0, 0 };
 	public static int[] dc = { 0, 0, 1, -1 };
 
@@ -23,7 +24,6 @@ public class Main_16234_인구이동 {
 		R = Integer.parseInt(st.nextToken()); // R명 이하
 
 		map = new int[N][N];
-		check = new boolean[N][N];
 
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -34,17 +34,19 @@ public class Main_16234_인구이동 {
 
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
+				check = new boolean[N][N]; // 변경한부분은 check
 				BFS(i, j);
-
 			}
 		}
+
 		System.out.println(result);
+
 	}
 
 	private static void BFS(int x, int y) {
 		Queue<Pair> queue = new LinkedList<Pair>();
 		queue.offer(new Pair(0, 0));
-		int peCheck = 1;
+		peCheck = 1;
 		int sum = map[x][y];
 		while (!queue.isEmpty()) {
 			Pair p = queue.poll();
@@ -52,46 +54,52 @@ public class Main_16234_인구이동 {
 			for (int i = 0; i < 4; i++) {
 				int nr = p.r + dr[i];
 				int nc = p.c + dc[i];
-				if (0 <= nr && nr < N && 0 <= nc && nc < N) {
-					int sub = Math.abs(map[nr][nc] - map[p.r][p.c]);
-					if (L <= sub && R >= sub) {
-						queue.add(new Pair(nr, nc));
+				if (0 <= nr && nr < N && 0 <= nc && nc < N && !check[nr][nc]) { // 만약 범위 안에 존재하고 방문하지 않았다면 들어가기
+					int sub = Math.abs(map[nr][nc] - map[p.r][p.c]); // 만약 내가 갈 곳의 위치 - 지금 위치 뺀게
+					if (L <= sub && R >= sub) { // L보단 크거나 같고 R보단 작거나 같다면
+						queue.add(new Pair(nr, nc)); // 큐에 넣는다.
 						sum += map[nr][nc];
-                        if(check[nr][nc]==false) {
-						   peCheck++;
-                        }
+						peCheck++;
 						check[nr][nc] = true;
 						if (peCheck == N * N && result == 0) {
-						//	System.out.println(peCheck);
-							System.out.println(1);
+							System.out.println(result + 1);
 							System.exit(0);
 						}
 					}
-//					for (int r = 0; r < N; r++) {
-//						System.out.println();
-//						for (int c = 0; c < N; c++) {
-//							System.out.print(check[r][c] + " ");
-//						}
-//					} // 입력받기
 				}
 			}
-		}
+		} // end of while
 
 		if (peCheck > 1) {
+			int cal = sum / peCheck;
 			result++;
-			peCheck = sum / peCheck;
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
-					if (check[i][j] == true) {
-						map[i][j] = peCheck;
+					if (check[i][j] == true) { // 만약에 true이면
+						map[i][j] = cal; // 변경
 					}
 				}
 			}
 		}
-		/*
-		 * for (int i = 0; i < N; i++) { System.out.println(); for (int j = 0; j < N;
-		 * j++) { System.out.print(map[i][j] + " "); } } // 입력받기
-		 */
+		for (int i = 0; i < N; i++) {
+			System.out.println();
+			for (int j = 0; j < N; j++) {
+				System.out.print(map[i][j] + " ");
+			}
+		} // 입력받기
+       System.out.println();
+		for (int i = 0; i < N; i++) {
+			System.out.println();
+			for (int j = 0; j < N; j++) {
+				if(check[i][j] == true)
+					System.out.print(1+" ");
+				else
+					System.out.print(0+" ");
+//				System.out.print(check[i][j] + " ");
+			}
+		} // 입력받기
+       System.out.println();
+
 	}
 
 	public static class Pair {
@@ -123,4 +131,6 @@ public class Main_16234_인구이동 {
  * 출력 : 인구 이동이 몇 번 발생하는지 첫째 줄에 출력한다.
  * 
  * 
+ * for (int r = 0; r < N; r++) { System.out.println(); for (int c = 0; c < N;
+ * c++) { System.out.print(check[r][c] + " "); } } // 입력받기
  */
