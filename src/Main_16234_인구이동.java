@@ -1,3 +1,4 @@
+import java.beans.Visibility;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ public class Main_16234_인구이동 {
 		N = Integer.parseInt(st.nextToken()); // N*N의 땅이 있는 것
 		L = Integer.parseInt(st.nextToken()); // L명 이상
 		R = Integer.parseInt(st.nextToken()); // R명 이하
-
+       
 		map = new int[N][N];
 
 		for (int i = 0; i < N; i++) {
@@ -32,12 +33,12 @@ public class Main_16234_인구이동 {
 			}
 		} // 입력받기
 
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				check = new boolean[N][N]; // 변경한부분은 check
-				BFS(i, j);
-			}
-		}
+           	 for (int i = 0; i < N; i++) {
+					for (int j = 0; j < N; j++) {
+						     BFS(i,j);
+					}
+				}
+           
 
 		System.out.println(result);
 
@@ -95,7 +96,6 @@ public class Main_16234_인구이동 {
 					System.out.print(1+" ");
 				else
 					System.out.print(0+" ");
-//				System.out.print(check[i][j] + " ");
 			}
 		} // 입력받기
        System.out.println();
