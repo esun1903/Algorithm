@@ -1,125 +1,213 @@
-package com.algorithm.a;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Main_16236_아기상어 {
-	private static int N;
-	private static int[][] m;
-	private static int[] cnt;
-	private static int r;
-	private static int c;
-	private static int[][] visited;
-	private static int size;
-	private static int num;
-	private static int time;
-	public static void main(String[] args) throws Exception {
+
+	public static int dr[] = { -1, 1, 0, 0 };
+	public static int dc[] = { 0, 0, -1, 1 };
+	public static int time = 0;
+	public static int 아기상어크기count = 0;
+
+	public static Queue<Pair> queue = new LinkedList<>(); // 아기상어의 위치
+
+	public static void main(String[] args) throws Exception, IOException {
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine()); // 공간의 크기, 2<=N<=20
-		m = new int[N+2][N+2]; // 공간을 한라인을 더 크게 잡음, 공간의 상태 0 123456 9
-		
-		for (int i = 0; i < m.length; i++) { // 외곽을 넘어가지 않도록 사용하지 않는 숫자로 초기화
-			m[i][N+1] = Integer.MAX_VALUE;
-			m[i][0] = Integer.MAX_VALUE;
-			m[N+1][i] = Integer.MAX_VALUE;
-			m[0][i] = Integer.MAX_VALUE;
-		}
-		
-		cnt = new int[10]; // 크기별 물고기의 개수
-		r = 0; // 아기상어의 위치
-		c = 0;
-		for (int i = 1; i <= N; i++) {
-			String s = br.readLine();
-			for (int j = 1, index = 0; j <= N; j++, index += 2) {
-				m[i][j] = s.charAt(index) - '0';
-				cnt[m[i][j]]++; // 크기별로 물고기 개수 카운팅
-				if (m[i][j] == 9) { // 아기상어라면
-					r = i;
-					c = j;
-					m[i][j] = 0; // 아기상어 칸을 맵에는 기록하지 않음(이동할꺼니까)
+		StringTokenizer st;
+
+		int N = Integer.parseInt(br.readLine());
+		int arr[][] = new int[N][N];
+
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < N; j++) {
+				arr[i][j] = Integer.parseInt(st.nextToken());
+				if (arr[i][j] == 9) { // 만약, 아기상어의 위치라면 queue에 아기상어의 위치와 아기상어의 크기를 넣어주기
+					queue.add(new Pair(i, j, 2,0,time));
 				}
 			}
-		}
-		visited = new int[N+2][N+2]; // 방문여부 체크
-		size = 2; // 아기상어의 초기 크기
-		num = 0; // 아기상어가 먹은 물고기 수
-		time = 0; // 지나간 시간
-		
-		while(true) {
-			boolean check = false;
-			for (int i = 1; i < size; i++) { // 아기상어가 먹을 수 있는 물고기가 존재하는가?
-				if (cnt[i] > 0) {
-					check = true;
-					break;
+		} // end of for
+
+		// 아기 상어가 어디로 이동할지를 정하기
+		// 만약, 이동할 수 있다면?
+		while (!queue.isEmpty()) {
+			Pair 아기상어 = queue.poll();
+			System.out.println("아기상어의 위치 " + 아기상어.r + " " + 아기상어.c + " " + 아기상어.size+" "+아기상어.sizecount+" "+아기상어.time);
+			int count = 0;
+			Queue<Pair> 먹을수있는물고기 = new LinkedList<>();
+
+			// 물고기가 있는지 없는지 체크하기 =====================
+			boolean flag = false;
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					if (arr[i][j] > 0 && arr[i][j] != 9) {
+						flag = true;
+					}
 				}
 			}
-			if (!check ) { // 먹을수 있는 물고기 없으면 그만
-				break;
+		
+			if (flag == false) {
+				System.out.println(time);
+				return;
 			}
-			if (!bfs()) { // 먹을수 있는 물고기는 있지만, 먹지 못한경우 그만
-				break;
+	
+			// ========================================
+
+			for (int i = 0; i < 4; i++) {
+				int nr = 아기상어.r + dr[i];
+				int nc = 아기상어.c + dc[i];
+
+				// 크기가 같은 물고기는 먹을 수 없지만, 그 물고기가 있는 칸은 지나갈 수 있다.
+
+				// 범위안에 있어 물고기가 있다면?
+				if (0 <= nr && 0 <= nc && nr < N && nc < N && arr[nr][nc] < 아기상어.size && arr[nr][nc] > 0) {
+					count++;
+					// 먹을 수 있는 물고기의 위치와 크기를 넣는다
+					먹을수있는물고기.add(new Pair(nr, nc, arr[nr][nc],0,아기상어.time+1));
+					if(time<아기상어.time+1)
+						time = 아기상어.time+1; 
+					System.out.println("먹을 수 있는 물고기에 추가됨" + nr + " " + nc + " " + 아기상어.size+" "+아기상어.sizecount+" "+(아기상어.time+1));
+				}
 			}
+
+			if (count > 1) {
+				// 먹을 수 있는 아기상어가 많다?
+				// 거리가 가장 가까운 물고기를 먹으러 간다.
+				Pair 가장가까운물고기 = new Pair(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE,  Integer.MAX_VALUE, Integer.MAX_VALUE);
+				int rd, cd, d;
+				int d2 = Integer.MAX_VALUE;
+				for (Pair p : 먹을수있는물고기) {
+					rd = (int) Math.pow(p.r, 아기상어.r);
+					cd = (int) Math.pow(p.c, 아기상어.c);
+					d = (int) Math.sqrt(rd + cd);
+					if (d2 > d) {
+						d2 = d;
+						가장가까운물고기.r = p.r;
+						가장가까운물고기.c = p.c;
+						가장가까운물고기.size = p.size;
+					} else if (d2 == d) {
+//                    만약에 거리가 가까운 물고기가 많다면 
+//						가장 위에있는 물고기, 
+//						그러한 물고기가 여러마리라면 가자 왼쪽에 있는 물고기를 먹는다. 
+						if (가장가까운물고기.r > p.r) {
+							가장가까운물고기.r = p.r;
+							가장가까운물고기.c = p.c;
+							가장가까운물고기.size = p.size;
+						} else if (가장가까운물고기.r == p.r) {
+							if (가장가까운물고기.c > p.c) {
+								가장가까운물고기.r = p.r;
+								가장가까운물고기.c = p.c;
+								가장가까운물고기.size = p.size;
+							}
+						}
+					}
+				}
+				아기상어.r = 가장가까운물고기.r;
+				아기상어.c = 가장가까운물고기.c;
+				아기상어.sizecount++; 
+				if(아기상어.sizecount == 아기상어.size) {
+					아기상어.size++; 
+					아기상어.sizecount=0; 
+				}
+				arr[아기상어.r][아기상어.c] = 0;
+
+				queue.add(new Pair(아기상어.r, 아기상어.c, 아기상어.size,아기상어.sizecount, time+1));
+
+			} else if (count == 1) {
+				// 그 물고기를 먹으러 간다.
+				Pair p = 먹을수있는물고기.poll();
+				아기상어.r = p.r;
+				아기상어.c = p.c;
+				아기상어.sizecount ++; 
+				아기상어.time = p.time; 
+				arr[아기상어.r][아기상어.c] = 0;
+				if(아기상어.sizecount == 아기상어.size) {
+					아기상어.size++; 
+					아기상어.sizecount=0; 
+				}
+				System.out.println("여기에 추가할거야 ~ "+ p.r+" "+p.c+" "+아기상어.sizecount+" "+아기상어.time+" ");
+				if(time<아기상어.time)
+					time = 아기상어.time; 
+				queue.add(new Pair(아기상어.r, 아기상어.c, 아기상어.size,아기상어.sizecount, 아기상어.time));
+			} else { // count ==0 이라면
+
+				for (int i = 0; i < 4; i++) {
+					int nr = 아기상어.r + dr[i];
+					int nc = 아기상어.c + dc[i];
+                    
+					// 크기가 같은 물고기는 먹을 수 없지만, 그 물고기가 있는 칸은 지나갈 수 있다.
+					// 범위안에 있어 물고기가 있다면?
+					if (0 <= nr && 0 <= nc && nr < N && nc < N && arr[nr][nc] <= 아기상어.size) {
+						// 큐에 추가
+						
+						queue.add(new Pair(nr, nc, 아기상어.size,아기상어.sizecount,아기상어.time+1));
+						if(time<아기상어.time+1)
+							time = 아기상어.time+1; 
+					}
+				}
+			}
+
 		}
+//아기 상어는 자신의 크기와 같은 수의 물고기를 먹을 때 마다 크기가 1 증가한다.
+//		예를 들어, 크기가 2인 아기 상어는 물고기를 2마리 먹으면 크기가 3이 된다.
 		System.out.println(time);
-	} // end of main
-	// 우선순위 큐 new int[] {r,c};
-	public static PriorityQueue<int[]> q = new PriorityQueue<int[]>(new Comparator<int[]>() {
-		@Override
-		public int compare(int[] a, int[] b) { // 오름차순 a - b
-			if (visited[a[0]][a[1]] != visited[b[0]][b[1]]) { // 이동거리 가까운순
-				return visited[a[0]][a[1]] - visited[b[0]][b[1]];
-			}
-			if (a[0] != b[0]) { // 행 값이 작은순 (위쪽순)
-				return a[0] - b[0];
-			}
-			return a[1] - b[1]; // 열 값이 작은순 (좌측순)
-		}
-	});
-	/** 아기상어위치에서 나보다 작은 크기의 물고기 먹은경우 true 리턴, 먹지못한경우 false 리턴  */
-	public static boolean bfs() {
-		for (int i = 1; i <= N; i++) { // 방문여부 저장할 배열 초기화
-			for (int j = 1; j <= N; j++) {
-				visited[i][j] = 0;
-			}
-		}
-		q.clear(); // [0]:r, [1]:c
-		// 시작지점, 아기상어의 위치 r, c
-		visited[r][c] = 1; // 방문체크 (0:미방문, 0보다크면 방문, 1->0초, 2->1초)
-		q.offer(new int[] {r,c}); // 큐에 넣기, 아기상어의 위치
-		while(q.size() > 0) { // 반복문 큐가 빌때까지
-			int[] t = q.poll(); // 큐에서 꺼내기
-			r = t[0];
-			c = t[1];
-			
-			// 작업
-			if (0 < m[r][c] && m[r][c] < size) { // 물고기가 있고, 아기상어보다 작으면 먹기
-				cnt[m[r][c]]--; // 크기별 물고기 개수 감소
-				num++; // 아기상어 먹은 물고기 개수
-				time += visited[r][c] - 1; // 시간 누적
-				if (size == num) { // 자신의 크기만큼 먹으면, 아기상어 레벨업
-					size++; // 아기상어 크기 증가
-					num = 0; // 먹은 물고기 수 초기화
-				}
-				m[r][c] = 0; // 아기상어가 물고기 먹음, 물고기 삭제
-				return true; // 먹음
-			}
-			for (int i = 0; i < dr.length; i++) { // 인접한칸
-				int nr = r + dr[i];
-				int nc = c + dc[i];
-				// 배열의범위를 벗어나지 않는지 외곽체크, 미방문, 나보다 작거나 같은 물고기만 진입가능
-				if (visited[nr][nc] == 0 && m[nr][nc] <= size) {
-					visited[nr][nc] = visited[r][c] + 1; // 방문체크 (아기상어의 이동거리를 저장하려고 활용)
-					q.offer(new int[] {nr, nc}); // 큐에 넣기
-				}
-			}
-		}
-		return false; // 못먹음
-	} // end of bfs()
-	private static int [] dr = {-1, 0, 0, 1}; // 상좌우하
-	private static int [] dc = { 0,-1, 1, 0}; // 상좌우하
-} // end of class
+		// 0: 빈 칸
+		// 1,2,3,4,5,6, : 칸에 있는 물고기의 크기
+		// 9 : 아기 상어의 위치
 
+	}// end of main
 
+	public static class Pair {
+		int r;
+		int c;
+		int size;
+		int sizecount; 
+	    int time;
+		public Pair(int r, int c, int size, int sizecount, int time) {
+
+			this.r = r;
+			this.c = c;
+			this.size = size;
+			this.sizecount = sizecount;
+			this.time = time;
+		} 
+
+       
+
+	}
+}// end of class
+
+/*
+ * N*N 크기의 공간에 물고기 M마리와 아기 상어 1마리가 있다. 공간은 1*1크기의 정사각형 칸으로 나누어져 있다. 한 칸에는 물고기가
+ * 최대 1마리 존재한다.
+ * 
+ * 아기상어와 물고기는 모두 크기를 가지고 있고, 이 크기는 자연수이다. 가장 처음에 아기 상어의 크기는 2이고, 아기 상어는 1초에
+ * 상하좌우로 인접한 한 칸씩 이동한다.
+ * 
+ * 아기상어는 자신의 크기보다 큰 물고기가 있는 칸은 지나갈 수 없고, 나머지 칸은 모두 지나갈 수 있다. 아기상어는 자신의 크기보다 작은
+ * 물고기만 먹을 수 있다. 따라서, 크기가 같은 물고기는 먹을 수 없지만, 그 물고기가 있는 칸은 지나갈 수 있다.
+ * 
+ * 아기상어가 어디로 이동할지 결정하는 방법은 아래와 같다. - 더 이상 먹을 수 있는 물고기가 공간에 없다면 아기 상어는 엄마 상어에게
+ * 도움을 요청한다. - 먹을 수 있는 물고기가 1마리라면, 그 물고기를 먹으러 간다. - 먹을 수 있는 물고기가 1마리보다 많다면, 거리가
+ * 가장 가까운 물고기를 먹으러 간다. - 거리는 아기상어가 있는 칸에서 물고기가 있는 칸으로 이동할 때, 지나야하는 칸의 개수의 최솟값이다.
+ * - 거리가 가까운 물고기가 많다면, 가장 위에 있는 물고기, 그러한 물고기가 여러마리라면, 가장 왼쪽에 있는 물고기를 먹는다.
+ * 
+ * - 아기상어의 이동은 1초가 걸리고, 물고기를 먹는데 걸리는 시간은 없담고 가정한다. 즉, 아기 상어가 먹을 수 있는 물고기가 있는 칸으로
+ * 이동했다면, 이동과 동시에 물고리를 먹는다. 물고기를 먹으면, 그 칸은 빈 칸이 된다. 아기 상어는 자신의 크기와 같은 수의 물고리를 먹을
+ * 때 마다 크기가 1 증가한다. 예를 들어, 크기가 2인 아기 상어는 물고기를 2마리 먹으면 크기가 3 이 된다.
+ * 
+ * 공간의 상태가 주어졌을 때, 아기 상어가 몇 초동안 엄마 상어에게 도움을 요청하지 않고 물고기를 잡아먹을 수 있는지 구하는 프로그램을
+ * 작성하시오
+ * 
+ * 첫째 줄에 공간의 크기 N(2 ≤ N ≤ 20)이 주어진다.
+ * 
+ * 둘째 줄부터 N개의 줄에 공간의 상태가 주어진다. 공간의 상태는 0, 1, 2, 3, 4, 5, 6, 9로 이루어져 있고, 아래와 같은
+ * 의미를 가진다.
+ * 
+ * 0: 빈 칸 1, 2, 3, 4, 5, 6: 칸에 있는 물고기의 크기 9: 아기 상어의 위치 아기 상어는 공간에 한 마리 있다.
+ * 
+ * 
+ * 첫째 줄에 아기 상어가 엄마 상어에게 도움을 요청하지 않고 물고기를 잡아먹을 수 있는 시간을 출력한다.
+ */
