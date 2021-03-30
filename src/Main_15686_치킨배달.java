@@ -33,9 +33,8 @@ public class Main_15686_치킨배달 {
 		}
 
 		// 치킨집의 개수 중 최대 M개를 고르고
-		
 		visited = new boolean[chicken.size()];
-		calculator(0, 0, M);
+		calculator(0, 0);
 		// M개를 고른 뒤에 치킨 거리를 구하기
 		// 이걸 반복하면서 가장 작은 값을 구하기
 		System.out.println(result);
@@ -43,25 +42,23 @@ public class Main_15686_치킨배달 {
 
 	// 만약, m2개를 다 골랐다면
 	// 이제 집들을 탐색하며 계산하기
-	private static void calculator(int x, int i, int m2) {
-		if (i <= m2) {
+	private static void calculator(int x, int i){
+		if (i <= M) {
 			List<Pair> arr = new LinkedList<Pair>();
 			for(int j = 0; j < chicken.size(); j++) {
 				if (visited[j]) {
-					System.out.print(j + " ");
-					//System.out.print(chicken.get(j).toString() + " ");
-					//arr.add(chicken.get(j));
-				}
-			}// end for if 
-			System.out.println();
-			//System.out.println("@@@@@@@@@");
-			//homecalculator(arr);
+				     arr.add(chicken.get(j));
+				  }
+			}
+			homecalculator(arr);
 		} 
 		for (int j = x; j < chicken.size(); j++) {
 			if (!visited[j]) {
 				visited[j] = true;
-				calculator(x + 1, i + 1, m2);
+				calculator(x + 1, i + 1);
 				visited[j] = false;
+			}else {
+				break; 
 			}
 		}
 	}
@@ -96,10 +93,10 @@ public class Main_15686_치킨배달 {
 			this.c = c;
 		}
 
-		@Override
-		public String toString() {
-			return "Pair [r=" + r + ", c=" + c + "]";
-		}
+//		@Override
+//		public String toString() {
+//			return "Pair [r=" + r + ", c=" + c + "]";
+//		}
 		
 		
 	}
