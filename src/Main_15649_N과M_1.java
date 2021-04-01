@@ -5,41 +5,44 @@ import java.util.*;
 
 public class Main_15649_N과M_1 {
 
-	public static int M, N;
-	public static boolean[] visited;
-	public static StringBuilder sb;
+	// 순열
+	public static int N;
+	public static int M;
+	public static boolean visited[];
+	public static StringBuilder sb = new StringBuilder();
 
 	public static void main(String[] args) throws Exception {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		sb = new StringBuilder();
+
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		visited = new boolean[N+1];
-		int[] arr = new int[M+1];
-		calculator(0, arr);
-		System.out.println(sb);
 
+		int[] arr = new int[M];
+		visited = new boolean[N + 1];
+		caculator(0, arr);
+		System.out.println(sb);
 	}
 
-	private static void calculator(int i, int[] arr) {
+	private static void caculator(int i, int[] arr) {
 		if (i == M) {
-			for (int j =0; j<arr.length-1;j++) {
-				sb.append(arr[j] +" ");
-		     }
+			for (int j : arr) {
+				sb.append(j + " ");
+			}
 			sb.append("\n");
-            return; 
-		} else {
-			for (int j = 1; j <= N; j++) {
-                if(!visited[j]) {
-                	visited[j] = true; 
-                	arr[i] = j; 
-                	calculator(i+1, arr);
-                	visited[j] = false;
-                }
+		} // end of if
+		else {
+			for (int d = 1; d <= N; d++) {
+				if (!visited[d]) {
+					visited[d] = true;
+					arr[i] = d;
+					caculator(i + 1, arr);
+					visited[d] = false;
+				}
 			}
 		}
+
 	}
 
 }

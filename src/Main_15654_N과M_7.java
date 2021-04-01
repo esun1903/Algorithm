@@ -1,9 +1,10 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
+
 import java.util.*;
 
-public class Main_15650_N과M_2 {
+public class Main_15654_N과M_7{
 
 	// 순열
 	public static int N;
@@ -18,32 +19,36 @@ public class Main_15650_N과M_2 {
 
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-
 		int[] arr = new int[M];
+		int[] number = new int[N + 1];
+		st = new StringTokenizer(br.readLine());
+		for (int i = 1; i <= N; i++) {
+			number[i] = Integer.parseInt(st.nextToken());
+		}
+		Arrays.sort(number);
 		visited = new boolean[N + 1];
-		caculator(0, 0, arr);
+		caculator(0, arr, number);
 		System.out.println(sb);
 	}
 
-	private static void caculator(int i, int k, int[] arr) {
+	private static void caculator(int i, int[] arr, int[] number) {
 		if (i == M) {
-			for (int j : arr)
+			for (int j : arr) {
 				sb.append(j + " ");
+			}
 			sb.append("\n");
-			System.out.println("=============");
 			return;
 		} // end of if
-		else {
-			for (int d = 1; d <= N; d++) {
-				if (!visited[i]) {
-					visited[i] = true;
-					arr[i] = d;
-					caculator(i + 1, k + 1, arr);
-					visited[i] = false;
-				}
-			}
-		} // end of else
+
+		for (int d = 1; d <= N; d++) {
+	
+				arr[i] = number[d];
+				caculator(i + 1, arr, number);
+				
+		}
+
 	}
+
 }
 
 /*

@@ -3,47 +3,39 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 import java.util.*;
 
-public class Main_15650_N과M_2 {
+public class Main_15651_N과M_4 {
 
-	// 순열
-	public static int N;
-	public static int M;
-	public static boolean visited[];
-	public static StringBuilder sb = new StringBuilder();
+	public static int M, N;
+	public static boolean[] visited;
+	public static StringBuilder sb;
 
 	public static void main(String[] args) throws Exception {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-
+		sb = new StringBuilder();
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-
-		int[] arr = new int[M];
 		visited = new boolean[N + 1];
-		caculator(0, 0, arr);
+		int[] arr = new int[M + 1];
+		calculator(0,  0, arr);
 		System.out.println(sb);
 	}
 
-	private static void caculator(int i, int k, int[] arr) {
-		if (i == M) {
-			for (int j : arr)
-				sb.append(j + " ");
-			sb.append("\n");
-			System.out.println("=============");
-			return;
-		} // end of if
-		else {
-			for (int d = 1; d <= N; d++) {
-				if (!visited[i]) {
-					visited[i] = true;
-					arr[i] = d;
-					caculator(i + 1, k + 1, arr);
-					visited[i] = false;
-				}
+	private static void calculator(int count, int x, int[] arr) {
+		if (count == M) {
+			for (int j = 0; j < M; j++) {
+				sb.append((arr[j] + 1) + " ");
 			}
-		} // end of else
+			sb.append("\n");
+			return;
+		}
+		for (int j = x; j < N; j++) {
+			arr[count] = j;
+			calculator(count + 1, j, arr);
+		}
 	}
+
 }
 
 /*
