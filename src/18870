@@ -1,0 +1,55 @@
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+
+public class Main {
+
+    public static void main(String... args) throws IOException {
+
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(); // int형 priorityQueue 쓰기
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        int N = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        int arr[] = new int[N];
+        int arr2[] = new int[N];
+        int result[] = new int[N];
+        boolean visited[] = new boolean[N];
+
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+            priorityQueue.add(arr[i]);
+        } // end of for
+
+        // 중복 x
+        int count = 0;
+        int flag = 0;
+        for (int k: priorityQueue) {
+            flag = 0;
+            for (int i = 0; i < N; i++) {
+                if (k == arr[i] && visited[i] == false) {
+                    result[i] = count;
+                    visited[i] = true;
+                } else if (k == arr[i] && visited[i] == true) {
+                    flag = 1;
+                    break;
+                }
+            } // end of for
+            if (flag == 0)
+                count++;
+         }// end of for
+
+        for (int r : result) {
+            System.out.print(r + " ");
+        } // end of for
+        br.close();
+    } // end of main
+}// end of class
+
+// 입력을 받으면서 작은것부터 -> 큰 수 까지 정렬할 때
+// 가장 작으면 0 부터 시작하는데 만약 중복된다면 같은 값이다.
+// 우선순위 큐를 사용한 다음에 반복문 2ㅐ,,,, 효율적인 방법이 생각안난다 :)
