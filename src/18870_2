@@ -1,0 +1,46 @@
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Array;
+import java.util.*;
+
+
+public class Main_18870_2 {
+
+    public static void main(String... args) throws IOException {
+
+        StringBuilder sb = new StringBuilder();
+        Map<Integer, Integer> map = new HashMap<>();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        int N = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        int arr[] = new int[N];
+        int count = 0;
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        } // end of for
+        int arr2 [] = arr.clone();
+
+        Arrays.sort(arr2);
+        for (int n : arr2){
+            if(!map.containsKey(n))
+                map.put(n, count++);
+        }
+
+        for(int n : arr){
+            sb.append(map.get(n)).append(' ');
+        }
+        
+        System.out.println(sb.toString());
+
+
+    } // end of main
+}// end of class
+
+// 입력을 받으면서 작은것부터 -> 큰 수 까지 정렬할 때
+// 가장 작으면 0 부터 시작하는데 만약 중복된다면 같은 값이다.
+// 우선순위 큐를 사용한 다음에 반복문 2ㅐ,,,, 효율적인 방법이 생각안난다 :) ->  clone이 있다는 것을 알았던 문제! 그리고 블로그를 보고 이해한 문제였는데! (너무 도움되었다,,! ) 
+//https://girawhale.tistory.com/38
