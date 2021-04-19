@@ -12,7 +12,7 @@ public class Main_프로그래머스_타겟넘버2 {
 	public static int result = 0;
 	public static int sum = 0;
 
-	public static int solution(int[] numbers, int target) {
+	public static int solution(int[] numbers, int target) { 
 		int answer = 0;
 
 		visited = new boolean[numbers.length];
@@ -27,12 +27,12 @@ public class Main_프로그래머스_타겟넘버2 {
 			sum = 0;
 			for (int i = 0; i < numbers.length; i++) {
 				if (visited[i] == true) {
-					System.out.print(i + " ");
 					sum += numbers[i];
+					System.out.print(i + " ");
 				} else {
 					sum -= numbers[i];
 				}
-			}
+			} // end of for
 			System.out.println();
 			if (sum == target)
 				result++;
@@ -41,9 +41,9 @@ public class Main_프로그래머스_타겟넘버2 {
 
 		for (int i = x; i < numbers.length; i++) {
 			visited[i] = true;
-			func(i + 1, depth, numbers, target);
+			func(i + 1, depth+1, numbers, target);
 			visited[i] = false;
-		}
+		}// end of for 
 
 	}
 
