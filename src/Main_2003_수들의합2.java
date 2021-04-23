@@ -40,6 +40,7 @@ public class Main_2003_수들의합2 { // 시간초과남
 		} // end of while
 
 		System.out.println(count);
+		br.close();
 	}
 }
 

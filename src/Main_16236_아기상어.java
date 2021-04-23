@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main_16236_아기상어 {
+public class Main_16236_아기상어 {  //시간초과남 
 
 	public static int dr[] = { -1, 1, 0, 0 };
 	public static int dc[] = { 0, 0, -1, 1 };
@@ -34,7 +34,7 @@ public class Main_16236_아기상어 {
 		// 만약, 이동할 수 있다면?
 		while (!queue.isEmpty()) {
 			Pair 아기상어 = queue.poll();
-			System.out.println("아기상어의 위치 " + 아기상어.r + " " + 아기상어.c + " " + 아기상어.size+" "+아기상어.sizecount+" "+아기상어.time);
+//			System.out.println("아기상어의 위치 " + 아기상어.r + " " + 아기상어.c + " " + 아기상어.size+" "+아기상어.sizecount+" "+아기상어.time);
 			int count = 0;
 			Queue<Pair> 먹을수있는물고기 = new LinkedList<>();
 
@@ -68,7 +68,7 @@ public class Main_16236_아기상어 {
 					먹을수있는물고기.add(new Pair(nr, nc, arr[nr][nc],0,아기상어.time+1));
 					if(time<아기상어.time+1)
 						time = 아기상어.time+1; 
-					System.out.println("먹을 수 있는 물고기에 추가됨" + nr + " " + nc + " " + 아기상어.size+" "+아기상어.sizecount+" "+(아기상어.time+1));
+//					System.out.println("먹을 수 있는 물고기에 추가됨" + nr + " " + nc + " " + 아기상어.size+" "+아기상어.sizecount+" "+(아기상어.time+1));
 				}
 			}
 
@@ -127,7 +127,7 @@ public class Main_16236_아기상어 {
 					아기상어.size++; 
 					아기상어.sizecount=0; 
 				}
-				System.out.println("여기에 추가할거야 ~ "+ p.r+" "+p.c+" "+아기상어.sizecount+" "+아기상어.time+" ");
+//				System.out.println("여기에 추가할거야 ~ "+ p.r+" "+p.c+" "+아기상어.sizecount+" "+아기상어.time+" ");
 				if(time<아기상어.time)
 					time = 아기상어.time; 
 				queue.add(new Pair(아기상어.r, 아기상어.c, 아기상어.size,아기상어.sizecount, 아기상어.time));
