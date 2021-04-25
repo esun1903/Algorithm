@@ -2,15 +2,16 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main_2003_수들의합2 { // 시간초과남
+public class Main_2003_수들의합2 { // 시간초과남 -> 풀림  -> 이유 : if , else if 의 순서를 변경하니 됐다 -> if문의 우선순위가 문제였던 것 같다. 
 
+	//
 	public static void main(String[] args) throws Exception {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
 		int N = Integer.parseInt(st.nextToken());
-		long M = Long.parseLong(st.nextToken());
+		int  M = Integer.parseInt(st.nextToken());
 		int arr[] = new int[N];
 		
 		st = new StringTokenizer(br.readLine());
@@ -18,22 +19,24 @@ public class Main_2003_수들의합2 { // 시간초과남
 		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		} 
-
+// =========================== 
+		
 		int start = 0, end = 0;
-		long sum = 0;
+		int sum = 0;
 		int count = 0;
 
 		while (true) {
-			if (end == N) { // 만약 이거라면 끝
+		
+			 if (sum >= M) { //
+				sum  -= arr[start++];
+			}
+			 else if (end >= N) { // 만약 이거라면 끝
 				break;
+			} 
+			 else { // end를 더하기
+				sum += arr[end++];
 			}
-			else if (sum >= M) { //
-				sum = sum - arr[start];
-				start++;
-			} else { // end를 더하기
-				sum += arr[end];
-				end++;
-			}
+			
 			if (sum == M) {
 				count++;
 			}
