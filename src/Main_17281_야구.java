@@ -18,16 +18,20 @@ public class Main_17281_야구 {
 			}
 		} // end of for
 		
+	 	
+		for (int i = 0; i < N; i++) {
+			System.out.println();
+			for (int j = 0; j < 9; j++) {
+			System.out.print(arr[i][j]+" ");
+			}
+		} // end of for
 		
+	
 		
 	}// end of main
 
 } // end of class
 
 /*
- * 
- * 각 선수가 각 이닝에서 얻는결과를 1번 이닝부터 N번 이닝까지 순서대로 주어진다. 
- * 이닝에서 얻는 결과는 9개의 정수가 공백으로 구분되어져 있다.
- * 각 결과가 의미하는 정수는 다음과 같다.
- * 
+ *  야구는 9명으로 이루어진 두 팀이 공격과 수비를 번갈아 하는 게임이다. 하나의 이
  */
