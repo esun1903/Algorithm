@@ -4,7 +4,7 @@ public class Main_핸드폰번호가리기 {
 
     public static void main(String ... args){
 
-        String answer = solution("01033334444");
+        String answer = solution("01034");
         System.out.println(answer);
 
     }// end of main
@@ -16,15 +16,20 @@ public class Main_핸드폰번호가리기 {
 
         for(int i = phone_number.length()-1; i>=0; i--){
 
-            System.out.println(phone_number.indexOf(i));
             if(i>=phone_number.length()-4)
-                str = str + phone_number.indexOf(i);
+                str = str + phone_number.charAt(i);
+            else
+                answer+="*";
 
         }// end of for
-        System.out.println(str);
-        return answer;
 
-    }
+
+        for(int i= 3; i>=0; i--){
+            answer+= str.charAt(i);
+        }
+
+        return answer;
+    }//end of solution
 
 }// end of class
 
