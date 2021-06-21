@@ -3,20 +3,36 @@ package Programmers;
 public class Main_문자열을정수로바꾸기 {
     public static void main(String ... args){
 
-        System.out.println(solution("+-"));
+        System.out.println(solution("-1234"));
 
     }//end of main
 
     public static int solution(String s) {
         int answer = 0;
         //양수, 음수인지 판단하는 boolean값
-        boolean flag = true;
-
+        boolean flag = false;
+        String str = "";
         for(int i= 0; i<s.length();i++){
 
+            if(s.charAt(i)-'0' == -5){ // + 일때
+                continue;
+            }
+            else if(s.charAt(i)-'0' == -3){ //-일때
+                flag = true;
+            }
+            else { //양수일때
+                str += Character.toString(s.charAt(i));
+                continue;
+            }
 
         }//end of for
 
+        if(flag == true){
+           answer =  Integer.parseInt(str)*-1;
+        }
+        else {
+            answer = Integer.parseInt(str);
+        }
         return answer;
     }
 
