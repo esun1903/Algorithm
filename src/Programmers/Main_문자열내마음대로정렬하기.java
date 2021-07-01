@@ -2,6 +2,7 @@ package Programmers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Main_문자열내마음대로정렬하기 {
 
@@ -14,13 +15,15 @@ public class Main_문자열내마음대로정렬하기 {
 
     public static String[] solution(String[] strings, int n) {
         String[] answer = {};
-        HashMap<Character, Integer> map = new HashMap<Character,Integer>();
+        TreeMap<Character, Integer> map = new TreeMap<Character,Integer>();
 
         for(int i = 0; i<strings.length; i++){
             map.put(strings[i].charAt(n), i);
-            System.out.println(i+" "+strings[i].charAt(n));
         }//end of for
 
+//        for(int i= 0; i<map.size(); i++){
+            System.out.println(map);
+//        }//end of for
 
       return answer;
     }//end of method
